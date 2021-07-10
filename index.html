@@ -8,6 +8,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
   <meta name="viewport"
     content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,7 +18,69 @@
 </head>
 
 <body>
-  <div id="yohoho" data-kinopoisk="401522"></div>
+
+  <div id="yohoho" data-tv="1" data-resize="1">
+    <div class="brand">Yohoho</div>
+    <div class="form">
+      <input type="text" placeholder="Название фильма / ID КиноПоиск" id="search-title" name="title"
+        style="width: 250px">
+      <input type="button" id="search" value="Найти">
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var search = document.querySelector('#search');
+      var title = document.querySelector('#search-title');
+
+      if (window.location.hash) {
+        var hash = window.location.hash.substring(1);
+        if (title && hash) {
+          title.value = decodeURIComponent(hash);
+          parse();
+        }
+      }
+
+      if (search) {
+        search.addEventListener('click', function () {
+          return parse();
+        });
+      }
+
+      if (title) {
+        title.addEventListener('keyup', function (event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            return parse();
+          }
+        });
+      }
+
+      function parse() {
+        var yohoho = document.querySelector('#yohoho');
+        if (title && title.value && yohoho) {
+          if (/kinopoisk\.ru/i.test(title.value)) {
+            var exec = /(film\/|movie\/).*?([0-9]{3,7})\//gi.exec(title.value);
+            if (exec && exec[2]) {
+              yohoho.dataset.kinopoisk = exec[2];
+              window.location.hash = '#' + yohoho.dataset.kinopoisk;
+              document.title = 'КиноПоиск: ' + yohoho.dataset.kinopoisk;
+            }
+          } else if (/^\d+$/.test(title.value)) {
+            yohoho.dataset.kinopoisk = title.value;
+            window.location.hash = '#' + yohoho.dataset.kinopoisk;
+            document.title = 'КиноПоиск: ' + yohoho.dataset.kinopoisk;
+          } else {
+            yohoho.dataset.title = encodeURIComponent(title.value);
+            window.location.hash = '#' + yohoho.dataset.title;
+            document.title = title.value;
+          }
+          items = [];
+          return yo();
+        }
+      }
+    })
+  </script>
 
   <!--Yadro counter-->
   <script type="text/javascript">
