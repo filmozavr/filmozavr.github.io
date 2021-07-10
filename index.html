@@ -8,7 +8,8 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/theme.min.css">
   <meta name="viewport"
     content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,16 +18,41 @@
   <script src="assets/js/yo.js"></script>
 </head>
 
-<body>
+<body class="index">
+  <style>
+    .index {
+      color: #fff;
+      background-color: #181818;
+    }
+  </style>
+  <section class="has-divider">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-6">
+        <div class="col-xl-8 col-lg-9">
+          <h3 class="display-4 mx-xl-6">
 
-  <div id="yohoho" data-tv="1" data-resize="1">
-    <div class="brand">Yohoho</div>
-    <div class="form">
-      <input type="text" placeholder="Название фильма / ID КиноПоиск" id="search-title" name="title"
-        style="width: 250px">
-      <input type="button" id="search" value="Найти">
+            <div class="card card-body border-0 o-hidden mb-0 bg-primary text-light" style="background: #4b40e0;">
+              <div class="position-relative d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div class="h2 text-center"><b>Наш телеграм канал</b></div>
+                <a href="https://t.me/filmozavr_pro" class="btn btn-lg btn-white">Перейти</a>
+              </div>
+            </div>
+
+          </h3>
+
+          <div id="yohoho" data-tv="1" data-resize="1" style="color: #000;">
+            <h3 class="display-4 mx-xl-6 text-white-50">Поиск фильма / Сериала</h3>
+            <div class="form">
+              <input type="text" placeholder="Название фильма / ID КиноПоиск" id="search-title" name="title"
+                style="width: 250px">
+              <input type="button" class="btn btn-xs btn-primary" id="search" value="Найти">
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -83,16 +109,7 @@
   </script>
 
   <!--Yadro counter-->
-  <script type="text/javascript">
-    document.write('<a href="//yadro.ru/click" ' +
-      'target="_blank"><img src="//counter.yadro.ru/hit?t28.5;r' +
-      escape(document.referrer) + ((typeof (screen) == 'undefined') ? '' :
-        ';s' + screen.width + '*' + screen.height + '*' + (screen.colorDepth ?
-          screen.colorDepth : screen.pixelDepth)) + ';u' + escape(document.URL) +
-      ';h' + escape(document.title.substring(0, 150)) + ';' + Math.random() +
-      '" alt="" title="Ядро: показано количество просмотров и посетителей" ' +
-      'border="0" width="88" height="120"><\/a>')
-  </script>
+
   <!--/Yadro-->
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
